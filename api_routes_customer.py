@@ -1,4 +1,4 @@
-from app import app, request, db
+from app import app, request, db, logging
 from customer_response import CustomerResponse
 from product import ProductResponse
 from utils import strToBool
@@ -13,8 +13,10 @@ def api_get_customer():
         customer = Customer.query.filter_by(id=id).first()
         if customer:
             response = CustomerResponse(customer)
+            logging.info(f'Get customer request successful')
             return response.json_response(), 200
         else:
+            logging.warning(f"Customer id:{id} is not found", 404)
             return f"CustomerID: {id} not found", 404
     elif 'name' in data.keys():
         name = data['name']
@@ -23,10 +25,13 @@ def api_get_customer():
             result = []
             for customer in customers:
                 result.append(CustomerResponse(customer).json_response())
+            logging.info(f'Get customer request successful')
             return result, 200
         else:
+            logging.warning(f"{name} is not found")
             return f"{name} is not found", 404
     else:
+        logging.error("Wrong query parameters. No such id or name")
         return "Wrong query parameters. No such id or name", 400
 
 
@@ -59,7 +64,7 @@ def add_customer_api():
     with app.app_context():
         db.session.add(customer)
         db.session.commit()
-    
+    logging.info("customer added")
     return "customer added", 200
 
 @app.route('/api/delete/customer')
@@ -79,9 +84,11 @@ def api_delete_customer():
                 message = f'CustomerID: {customer.id} - {customer.name} has been deleted'
                 db.session.delete(customer)
                 db.session.commit()
+                logging.info(message)
                 return message, 200
         else:
-            "No such customer on record", 404
+            logging.warning("No such customer on record")
+            return "No such customer on record", 404
 
 @app.route('/api/update/customer',methods=['POST'])
 def api_update_customer():
@@ -105,10 +112,13 @@ def api_update_customer():
             elif 'optchat' in data.keys():
                 customer.opt_chat = strToBool(data['optchat'])
             else:
+                logging.error("Wrong query parameters")
                 return "Wrong query parameters", 400
             customer.last_updated = dt.datetime.now()
             db.session.commit()
+            logging.info('Customer updated successfuly')
             return 'Customer updated successfuly', 200
         else:
+            logging.warning("No such customer on record")
             return "No such customer on record", 404
         

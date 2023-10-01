@@ -1,4 +1,4 @@
-from app import app, request, db
+from app import app, request, db, logging
 from product import ProductResponse
 from utils import strToBool
 import datetime as dt
@@ -11,8 +11,10 @@ def api_get_product():
         id = data['id']
         product = Product.query.filter_by(id=id).first()
         if product:
+            logging.info("Get product")
             return ProductResponse(product=product).json_response(), 200
         else:
+            logging.warning(f'No product under productid {id}')
             return f'No product under productid {id}', 404
     elif 'name' in data.keys():
         name = data['name']
@@ -21,8 +23,10 @@ def api_get_product():
         if products:
             for product in products:
                 result.append(ProductResponse(product).json_response())
+            logging.info("Get products")
             return result, 200
         else:
+            logging.warning(f'No products under: {name}')
             return f'No products under: {name}', 404
     elif 'customerid' in data.keys():
         customerid = data['customerid']
@@ -31,10 +35,13 @@ def api_get_product():
         if products:
             for product in products:
                 result.append(ProductResponse(product).json_response())
+            logging.info("Customer products")
             return result, 200
         else:
+            logging.info("Customer has no products assinged")
             return "Customer has no products assinged", 200
     else:
+        logging.error('Wrong query parameters')
         return 'Wrong query parameters', 400
     
 
@@ -61,7 +68,7 @@ def add_product_api():
     with app.app_context():
         db.session.add(product)
         db.session.commit()
-
+    logging.info(f'Product: {name} added to customer id: {id}')
     return f'Product: {name} added to customer id: {id}', 200
 
 @app.route('/api/delete/product', methods=['POST'])
@@ -73,8 +80,10 @@ def api_delete_product():
         if product:
             db.session.delete(product)
             db.session.commit()
+            logging.info('Product has been deleted')
             return 'Product has been deleted', 200
         else:
+            logging.warning('Product id not found')
             return 'Product id not found', 404
     elif 'customerid' in data.keys():
         customerid = data['customerid']
@@ -83,10 +92,13 @@ def api_delete_product():
             for product in products:
                 db.session.delete(product)
             db.session.commit()
+            logging.info('Product(s) has been deleted')
             return 'Product(s) has been deleted', 200
         else:
+            logging.warning("No products found under this customer id")
             "No products found under this customer id", 404
     else:
+        logging.error("Wrong query parameters")
         return "Wrong query parameters", 400
 
 @app.route('/api/update/product', methods=['POST'])
@@ -100,13 +112,17 @@ def api_update_product():
             else:
                 product.warranty = dt.datetime.now()
             db.session.commit()
+            logging.info("Product warranty has been updated")
             return "Product warranty has been updated", 200   
         elif 'changeto' in data.keys():
             product.customer_id = data['changeto']
             db.session.commit()
+            logging.info("Product ownership has been updated")
             return "Product ownership has been updated", 200
         else:
+            logging.warning("changeto argument missing")
             return "changeto argument missing", 400
     else:
+        logging.error("Wrong query parameters")
         return "Wrong query parameters", 400
         

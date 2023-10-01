@@ -1,9 +1,11 @@
 from flask import Flask, request, url_for, jsonify, render_template, Response
+from flask.logging import default_handler
 from flask_sqlalchemy import SQLAlchemy
 from models import Customer, Product, db
 from customer_response import CustomerResponse
 from product import ProductResponse
 from utils import strToBool
+import logging
 import datetime as dt
 
 app = Flask(__name__)
@@ -31,8 +33,10 @@ def get_customer(id):
     cust = db.get_or_404(Customer,id)
     if cust:
         customer = CustomerResponse(cust)
+        app.logger.info("%s cutomer found")
         return customer.json_response(), 200
     else:
+        app.logger.warning("%s customer not found")
         return "Customer Not Found", 404
     
 #Query product by id
@@ -41,8 +45,10 @@ def get_product(id):
     item = db.get_or_404(Product,id)
     if item:
         product = ProductResponse(item)
+        app.logger.info("%s customer found")
         return product.json_response(), 200
     else:
+        app.loger.info("%s customer not found")
         return "Customer Not Found", 404
 
 #POST routes ------------------------------------------------
@@ -71,7 +77,7 @@ def add_product():
     with app.app_context():
         db.session.add(product)
         db.session.commit()
-
+    app.logging.info(f"Product: {name} added to customer id: {id}")
     return f'Product: {name} added to customer id: {id}', 200
 
 #adding customer
@@ -100,9 +106,10 @@ def add_customer():
     with app.app_context():
         db.session.add(customer)
         db.session.commit()
-    
+    app.logging.info(f"Customer: {name} added")
     return "customer added", 200
 
+logging.basicConfig(filename='./api.log',level=logging.INFO)
 import api_routes_customer
 import api_routes_product 
 
