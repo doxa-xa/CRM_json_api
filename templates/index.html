@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{url_for('add_customer')}}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="John Doe">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="john@example.com">
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" placeholder="3415 Holder str. Rooster Alabama">
+        <label for="phone">Mobile:</label>
+        <input type="text" name="phone" id="phone" placeholder="+1 905 134517">
+        <select name="status" id="status">
+            <option value="active">active</option>
+            <option value="inactive">inactive</option>
+            <option value="suspended">suspended</option>
+        </select>
+        <label for="opt_phone">Contact by phone:</label>
+        <input type="checkbox" name="opt_phone" id="opt_phone">
+        <label for="opt_email">Contact by email:</label>
+        <input type="checkbox" name="opt_email" id="opt_email">
+        <label for="opt_chat">Contact by chat:</label>
+        <input type="checkbox" name="opt_chat" id="opt_chat">
+        <input type="submit" value="Add Customer">
+    </form>
+</body>
+</html>
