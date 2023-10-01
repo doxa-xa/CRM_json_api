@@ -30,6 +30,7 @@ class Product(db.Model):
     #deafault item warranty is 2 years
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
     warranty = db.Column(db.DateTime, nullable=False)
+    review = db.relationship('ProductFeedback', backref='product', lazy=True)
 
 #TODO - Feedback from customer
 
@@ -38,5 +39,14 @@ class Feedback(db.Model):
     heading = db.Column(db.String, nullable=False)
     body = db.Column(db.String)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
+    date = db.Column(db.DateTime, nullable=False, default=dt.datetime.now())
+    nps = db.Column(db.Integer, nullable=False, default=0)
+
+class ProductFeedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    heading = db.Column(db.String, nullable=False)
+    body = db.Column(db.String)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=dt.datetime.now())
     nps = db.Column(db.Integer, nullable=False, default=0)

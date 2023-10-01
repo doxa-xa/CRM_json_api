@@ -112,6 +112,8 @@ def add_customer():
 logging.basicConfig(filename='./api.log',level=logging.INFO)
 import api_routes_customer
 import api_routes_product 
+import api_routes_feedback
+
 
 if __name__ == '__main__':
     app.run(debug=True)
