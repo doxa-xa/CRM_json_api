@@ -3,3 +3,4 @@ def strToBool(value):
         return False
     elif value == "true":
         return True
+    
