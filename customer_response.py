@@ -24,6 +24,7 @@ class CustomerResponse:
             "phone":self.phone,
             "email":self.email,
             "status":self.status,
+            "revenue":self.revenue,
             "optPhone":self.optPhone,
             "optEmail":self.optEmail,
             "optChat":self.optChat,

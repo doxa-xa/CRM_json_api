@@ -7,11 +7,19 @@ from models import Customer, Product
 
 @app.route('/api/get/customer')
 def api_get_customer():
+    turnover = 0.0
     data = request.get_json()
     if 'id' in data.keys():
         id = int(data['id'])
         customer = Customer.query.filter_by(id=id).first()
         if customer:
+            products = Product.query.filter_by(customer_id=id).all()
+            if products:
+                for product in products:
+                    turnover += product.price
+                if turnover != customer.revenue:
+                    customer.revenue = turnover
+                    db.session.commit
             response = CustomerResponse(customer)
             logging.info(f'Get customer request successful')
             return response.json_response(), 200

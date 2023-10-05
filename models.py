@@ -18,9 +18,6 @@ class Customer(db.Model):
     last_updated = db.Column(db.DateTime, nullable=False, default=dt.datetime.now().strftime("%d.%m.%Y-%H:%M"))
     last_contacted = db.Column(db.DateTime)
 
-    #TODO - customer total revenue based on the items assigned
-    def revenue_update(self,price):
-        return self.products.price + price
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -50,3 +47,12 @@ class ProductFeedback(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=dt.datetime.now())
     nps = db.Column(db.Integer, nullable=False, default=0)
+
+class CustomerRequest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    request = db.Column(db.String, nullable=False)
+    customer_id = db.Column(db.Integer,db.ForeignKey('customer.id'), nullable=False)
+    request_date = db.Column(db.DateTime, nullable=False, default=dt.datetime.now())
+    resolved = db.Column(db.Boolean, default=False)
+    resolution = db.Column(db.String)
+    resolution_date = db.Column(db.DateTime)
