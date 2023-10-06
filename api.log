@@ -93,3 +93,177 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:root:Get customer request successful
 INFO:werkzeug:127.0.0.1 - - [05/Oct/2023 19:07:46] "GET /api/get/customer HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:37:43] "[33mPOST /api/add/customer/request HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:37:57] "[33mPOST /api/open/customer/request HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Customer request has been registered
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:38:55] "POST /api/open/customer/request HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:39:08] "[31m[1mPOST /api/open/customer/request HTTP/1.1[0m" 400 -
+ERROR:root:Wrong query parameters
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:41:47] "[31m[1mPOST /api/open/customer/request HTTP/1.1[0m" 400 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /api/close/customer/request [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: 'true'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_customer_requests.py", line 31, in api_close_customer_request
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 85, in save_obj
+    _emit_update_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 894, in _emit_update_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: 'true'
+[SQL: UPDATE customer_request SET resolved=?, resolution=?, resolution_date=? WHERE customer_request.id = ?]
+[parameters: [{'resolved': 'true', 'resolution_date': datetime.datetime(2023, 10, 6, 20, 45, 5, 406305), 'resolution': 'Booked an oil change appointment for 11.10.2023 @ 11:30 at our service center', 'customer_request_id': 1}]]
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:45:05] "[35m[1mPOST /api/close/customer/request HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:resolution ticket has been updated
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:45:29] "POST /api/close/customer/request HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:45:42] "[31m[1mPOST /api/close/customer/request HTTP/1.1[0m" 400 -
+ERROR:root:Wrong query parameters
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:45:47] "[31m[1mPOST /api/close/customer/request HTTP/1.1[0m" 400 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /api/get/customer/request [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_customer_requests.py", line 47, in api_get_customer_request
+    crr = CustomerRequestResponse(customerRequest)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\customer_response.py", line 40, in __init__
+    self.request_date = customerRequest.requestDate
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CustomerRequest' object has no attribute 'requestDate'
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:55:45] "[35m[1mGET /api/get/customer/request HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /api/get/customer/request [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_customer_requests.py", line 47, in api_get_customer_request
+    crr = CustomerRequestResponse(customerRequest)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\customer_response.py", line 40, in __init__
+    self.request_date = customerRequest.requestDate
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CustomerRequest' object has no attribute 'requestDate'
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 20:55:58] "[35m[1mGET /api/get/customer/request HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:CustomerRequest fetched
+INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 21:00:23] "GET /api/get/customer/request HTTP/1.1" 200 -

@@ -31,3 +31,24 @@ class CustomerResponse:
             "lastUpdated":self.lastUpdated,
             "lastContacted":self.lastContacted
         }
+    
+class CustomerRequestResponse:
+    def __init__(self,customerRequest):
+        self.id = customerRequest.id
+        self.request = customerRequest.request
+        self.customer_id = customerRequest.customer_id
+        self.request_date = customerRequest.request_date
+        self.resolved = customerRequest.resolved
+        self.resolution = customerRequest.resolution
+        self.resolution_date = customerRequest.resolution_date
+
+    def get_json(self):
+        return {
+            'id':self.id,
+            'request':self.request,
+            'customer_id':self.customer_id,
+            'requestDate':self.request_date,
+            'resolved':self.resolved,
+            'resolution':self.resolution,
+            'resolutionDate':self.resolution_date
+        }

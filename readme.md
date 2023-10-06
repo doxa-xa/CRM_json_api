@@ -115,4 +115,28 @@ III. Customer Feedback - currently in development
 * single record by customerid, productid
 - JSON request body:{"productid": required, "customerid":required, "heading":required, "body":required}
 
-IV. Reporting (BI) - to be developed
+IV. Customer Request (Tickting)
+
+1. Open Ticket:
+- URL: /api/open/customer/request
+- method: POST
+- actoion: creates a reacord of a customer inquiry or problem
+* single record by: request, customerid
+- JSON request body: {"request":required, "customerid": required}
+
+2. Close Ticket:
+- URL: /api/close/customer/request
+- method: POST
+- actoion: creates a reacord of a customer inquiry or problem
+* single record by: id
+- JSON request body: {"id":required, "resolved": required, "resolution":required }
+
+3. Get Ticket:
+- URL: /api/get/customer/request
+- method: GET
+- actoion: returns a reacord of a customer inquiry or problem
+* single record by: id
+- JSON request body: {"id":required }
+
+
+V. Reporting (BI) - to be developed
