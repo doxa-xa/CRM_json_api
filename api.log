@@ -267,3 +267,130 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:root:CustomerRequest fetched
 INFO:werkzeug:127.0.0.1 - - [06/Oct/2023 21:00:23] "GET /api/get/customer/request HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:48:35] "[33mGET /api/get/customer/feedback HTTP/1.1[0m" 404 -
+ERROR:root:Wrong query parameters
+INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:48:53] "[31m[1mGET /api/get/product/feedback HTTP/1.1[0m" 400 -
+INFO:root:Brand feedback records retrieved
+ERROR:app:Exception on /api/get/product/feedback [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1826, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1845, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2156, in make_response
+    rv = self.json.response(rv)
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 309, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=mimetype
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 230, in dumps
+    return json.dumps(obj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 122, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type method is not JSON serializable
+INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:49:04] "[35m[1mGET /api/get/product/feedback HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Brand feedback records retrieved
+ERROR:app:Exception on /api/get/product/feedback [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1826, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1845, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2156, in make_response
+    rv = self.json.response(rv)
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 309, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=mimetype
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 230, in dumps
+    return json.dumps(obj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 122, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type method is not JSON serializable
+INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:51:53] "[35m[1mGET /api/get/product/feedback HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Brand feedback records retrieved
+ERROR:app:Exception on /api/get/product/feedback [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1826, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1845, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2156, in make_response
+    rv = self.json.response(rv)
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 309, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=mimetype
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 230, in dumps
+    return json.dumps(obj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\json\provider.py", line 122, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type method is not JSON serializable
+INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:53:40] "[35m[1mGET /api/get/product/feedback HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Brand feedback records retrieved
+INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:54:26] "GET /api/get/product/feedback HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Brand feedback records retrieved
+INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:55:13] "GET /api/get/brand/feedback HTTP/1.1" 200 -

@@ -102,18 +102,32 @@ II.Product:
 III. Customer Feedback - currently in development
 
 1. Brand Feedback:
-- URL: /add/brand/feedback
+- URL: /api/add/brand/feedback
 - method: POST
 - action: creates a record of a customer feedback for brand question
 * single record by customerid
 - JSON request body:{"customerid":required, "heading":required, "body":required}
 
-2. Brand Feedback:
-- URL: /add/product/feedback
+2. Product Feedback:
+- URL: /api/add/product/feedback
 - method: POST
 - action: creates a record of a customer feedback for product question
 * single record by customerid, productid
 - JSON request body:{"productid": required, "customerid":required, "heading":required, "body":required}
+
+3. Get Product Feedback:
+- URL: /api/get/product/feedback
+- method: GET
+- action: retrieves all records of a customer feedback for product question
+* single record by customerid
+- JSON request body:{"customerid": required}
+
+4. Get Brand Feedback:
+- URL: /api/get/brand/feedback
+- method: GET
+- action: retrieves all records of a customer feedback for brand question
+* single record by customerid
+- JSON request body:{"customerid": required}
 
 IV. Customer Request (Tickting)
 
