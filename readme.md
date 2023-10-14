@@ -4,16 +4,21 @@ You will need flask in order to run.
 I recomend installing Postman (or similar software) in order to test and monitor the API logic.
 
 Actions:
-1.You can use it to add, update and delete customers from a database. 
-2.You can use it to add, update and delete products from a database.
-3.You can assign and unassign products to customers using customerid foreign key in the products table
+1. You can use it to add, update and delete customers from a database. 
+2. You can use it to add, update and delete products from a database.
+3. You can assign and unassign products to customers using customerid foreign key in the products table
+4. You can collect feedback from customers for brand and product questions
+5. You can submit and respond to customer requests
 
 Database type - SQLite
 Responses are in JSON format
 
 Tables:
 - Customer
+- CustomerRequest
 - Product
+- Feedback
+- ProductFeedback
 
 Endpoints:
 

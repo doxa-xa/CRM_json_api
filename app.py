@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, jsonify, render_template, Response
+from flask import Flask, request, url_for, jsonify, render_template, Response, send_from_directory
 from flask.logging import default_handler
 from flask_sqlalchemy import SQLAlchemy
 from models import Customer, Product, db
@@ -8,9 +8,13 @@ from utils import strToBool
 import logging
 import datetime as dt
 
+UPLOAD_FOLDER = './uploaded'
+ALLOWED_EXTENTIONS = {'xls','xlsx'}
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///customers.db'
+app.confug['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db.init_app(app)
 
