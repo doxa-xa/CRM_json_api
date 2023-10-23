@@ -394,3 +394,155 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:root:Brand feedback records retrieved
 INFO:werkzeug:127.0.0.1 - - [07/Oct/2023 09:55:13] "GET /api/get/brand/feedback HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Stoyan Todorov with c.todopob@gmail.com initiated export of customer data
+ERROR:app:Exception on /api/customer/export [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_customer.py", line 159, in api_customer_export
+    workbook.save(f'/uploaded/{excel_file}')
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\workbook\workbook.py", line 386, in save
+    save_workbook(self, filename)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\writer\excel.py", line 291, in save_workbook
+    archive = ZipFile(filename, 'w', ZIP_DEFLATED, allowZip64=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\zipfile.py", line 1281, in __init__
+    self.fp = io.open(file, filemode)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/uploaded/customers_data19102023_1922.xlsx'
+INFO:werkzeug:127.0.0.1 - - [19/Oct/2023 19:22:57] "[35m[1mGET /api/customer/export HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Stoyan Todorov with c.todopob@gmail.com initiated export of customer data
+INFO:root:Export successful
+ERROR:app:Exception on /api/customer/export [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_customer.py", line 161, in api_customer_export
+    return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,filename=excel_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: send_from_directory() missing 1 required positional argument: 'path'
+INFO:werkzeug:127.0.0.1 - - [19/Oct/2023 19:24:07] "[35m[1mGET /api/customer/export HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Stoyan Todorov with c.todopob@gmail.com initiated export of customer data
+INFO:root:Export successful
+INFO:werkzeug:127.0.0.1 - - [19/Oct/2023 21:20:29] "GET /api/customer/export HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:stoyan todorov with c.todopob@gmail.com initiated export of customer data
+ERROR:app:Exception on /api/product/export [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_product.py", line 146, in api_product_export
+    worksheet[f'G{row}'] = product.review
+    ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\worksheet\worksheet.py", line 318, in __setitem__
+    self[key].value = value
+    ^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\cell\cell.py", line 218, in value
+    self._bind_value(value)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\cell\cell.py", line 187, in _bind_value
+    raise ValueError("Cannot convert {0!r} to Excel".format(value))
+ValueError: Cannot convert [<ProductFeedback 1>] to Excel
+INFO:werkzeug:127.0.0.1 - - [23/Oct/2023 20:33:51] "[35m[1mGET /api/product/export HTTP/1.1[0m" 500 -
+INFO:root:stoyan todorov with c.todopob@gmail.com initiated export of customer data
+ERROR:app:Exception on /api/product/export [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_product.py", line 146, in api_product_export
+    row += 1
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\worksheet\worksheet.py", line 318, in __setitem__
+    self[key].value = value
+    ^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\cell\cell.py", line 218, in value
+    self._bind_value(value)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\cell\cell.py", line 187, in _bind_value
+    raise ValueError("Cannot convert {0!r} to Excel".format(value))
+ValueError: Cannot convert [<ProductFeedback 1>] to Excel
+INFO:werkzeug:127.0.0.1 - - [23/Oct/2023 20:36:41] "[35m[1mGET /api/product/export HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:stoyan todorov with c.todopob@gmail.com initiated export of customer data
+ERROR:app:Exception on /api/product/export [GET]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\api_routes_product.py", line 149, in api_product_export
+    workbook.save(f'/uploaded/{excel_file}')
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\workbook\workbook.py", line 386, in save
+    save_workbook(self, filename)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\writer\excel.py", line 291, in save_workbook
+    archive = ZipFile(filename, 'w', ZIP_DEFLATED, allowZip64=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\zipfile.py", line 1281, in __init__
+    self.fp = io.open(file, filemode)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/uploaded/customers_data23102023_2041.xlsx'
+INFO:werkzeug:127.0.0.1 - - [23/Oct/2023 20:41:42] "[35m[1mGET /api/product/export HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:stoyan todorov with c.todopob@gmail.com initiated export of customer data
+INFO:root:Export successful
+INFO:werkzeug:127.0.0.1 - - [23/Oct/2023 20:42:46] "GET /api/product/export HTTP/1.1" 200 -

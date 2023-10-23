@@ -158,4 +158,16 @@ IV. Customer Request (Tickting)
 - JSON request body: {"id":required }
 
 
-V. Reporting (BI) - to be developed
+V. Reporting (BI) 
+
+1. Customer Export
+- URL: /api/customer/export
+- method: GET
+- acion: extacts an excel worksheet of all customer records in the database
+- JSON request body: {"name":required, "surname":required, "email":required}
+
+2. Product Export
+- URL: /api/product/export
+- method: GET
+- acion: extacts an excel worksheet of all product records in the database
+- JSON request body: {"name":required, "surname":required, "email":required}

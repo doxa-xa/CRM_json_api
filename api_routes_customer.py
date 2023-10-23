@@ -133,7 +133,7 @@ def api_update_customer():
 @app.route('/api/customer/export')
 def api_customer_export():
     data = request.get_json()
-    if all('name','surname','email') in data.keys():
+    if all(key in data for key in ('name','surname','email')):
         logging.info(f"{data['name']} {data['surname']} with {data['email']} initiated export of customer data")
         customers = Customer.query.all()
         if customers:
@@ -156,9 +156,9 @@ def api_customer_export():
                 row += 1
             now = dt.datetime.now().strftime("%d%m%Y_%H%M") 
             excel_file = f'customers_data{now}.xlsx' 
-            workbook.save(f'/uploaded/{excel_file}')
+            workbook.save(f'uploaded/{excel_file}')
             logging.info('Export successful')
-            return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,filename=excel_file)
+            return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,path=excel_file, as_attachment=True)
         logging.warning('No customer records')
         return 'No customer records', 404
     logging.error('Wrong query parameters')

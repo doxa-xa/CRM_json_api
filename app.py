@@ -14,7 +14,7 @@ ALLOWED_EXTENTIONS = {'xls','xlsx'}
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///customers.db'
-app.confug['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db.init_app(app)
 

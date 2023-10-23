@@ -127,9 +127,9 @@ def api_update_product():
         return "Wrong query parameters", 400
     
 @app.route('/api/product/export')
-def api_customer_export():
+def api_product_export():
     data = request.get_json()
-    if all('name','surname','email') in data.keys():
+    if all(key in data for key in ('name','surname','email')):
         logging.info(f"{data['name']} {data['surname']} with {data['email']} initiated export of customer data")
         products = Product.query.all()
         if products:
@@ -143,13 +143,12 @@ def api_customer_export():
                 worksheet[f'D{row}'] = product.purchased
                 worksheet[f'E{row}'] = product.customer_id
                 worksheet[f'F{row}'] = product.warranty
-                worksheet[f'G{row}'] = product.review
                 row += 1
             now = dt.datetime.now().strftime("%d%m%Y_%H%M") 
-            excel_file = f'customers_data{now}.xlsx' 
-            workbook.save(f'/uploaded/{excel_file}')
+            excel_file = f'products_data{now}.xlsx' 
+            workbook.save(f'uploaded/{excel_file}')
             logging.info('Export successful')
-            return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,filename=excel_file)
+            return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,path=excel_file, as_attachment=True)
         logging.warning('No customer records')
         return 'No customer records', 404
     logging.error('Wrong query parameters')
