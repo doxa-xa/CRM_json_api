@@ -171,3 +171,21 @@ V. Reporting (BI)
 - method: GET
 - acion: extacts an excel worksheet of all product records in the database
 - JSON request body: {"name":required, "surname":required, "email":required}
+
+VI. Bulk DB Uploads:
+
+1. Upload Customers File
+- URL: /upload/customers
+- method: POST* (Browser Web Form file upload)
+- supported file types: xls, xlsx, txt, csv
+- data format: 
+* XLS/XLSX: [A1:Name(+Surname),B1:Email,C1:Address,D1:Phone,E1:Opt_email,F1:Opt_phone,G1:Opt_chat,H1:Status] - Opt fields are Optional Name & Email data is mandatory, fields without them will be skipped and logged.
+* TXT/CSV: without headers - Opt fields are Optional Name & Email data is mandatory, fields without them will be skipped and logged.
+
+2. Upload Products File
+- URL: /upload/products
+- method: POST* (Browser Web Form file upload)
+- supported file types: xls, xlsx, txt, csv
+- data format: 
+* XLS/XLSX: [A1:Name,B1:Price,C1:Purchased,D1:Warranty,] - Name & Price data is mandatory, fields without them will be skipped and logged.
+* TXT/CSV: without headers - Name & Price data is mandatory, fields without them will be skipped and logged.

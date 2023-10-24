@@ -1,7 +1,6 @@
 def strToBool(value):
-    if value == "false" or "":
+    if value.lower() == "false" or "":
         return False
-    elif value == "true":
+    elif value.lower() == "true":
         return True
-    
     

@@ -28,5 +28,26 @@
         <input type="checkbox" name="opt_chat" id="opt_chat">
         <input type="submit" value="Add Customer">
     </form>
+    <h5>Upload customers worksheet</h5>
+    <form action="{{url_for('import_customers')}}" method="post" enctype="multipart/form-data">
+        <label for="custfile">Upload file:</label>
+        <input type="file" name="custfile" id="custfile" placeholder="customers.xlsx">
+        <button type="submit">Upload</button>
+    </form>
+    <h5>Upload products worksheet</h5>
+    <form action="{{url_for('import_products')}}" method="post" enctype="multipart/form-data">
+        <label for="prodfile">Upload file:</label>
+        <input type="file" name="prodfile" id="prodfile" placeholder="products.xlsx">
+        <button type="submit">Upload</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 </body>
 </html>

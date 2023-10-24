@@ -1,25 +1,121 @@
-from flask import Flask, request, url_for, jsonify, render_template, Response, send_from_directory
+from flask import Flask, request, url_for, flash, render_template, Response, send_from_directory, redirect
 from flask.logging import default_handler
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.utils import secure_filename
 from models import Customer, Product, db
 from customer_response import CustomerResponse
 from product import ProductResponse
 from utils import strToBool
 import logging
 import datetime as dt
+import os
+import openpyxl
+import csv
+import datetime
+
+#TODO: REDUCE THE CODE REPETITION IN HELPER METHODS IMPROVE SPEED
 
 UPLOAD_FOLDER = './uploaded'
 ALLOWED_EXTENTIONS = {'xls','xlsx'}
 
 app = Flask(__name__)
-
+app.secret_key = 'this is super secret key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///customers.db'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = {'xlsx','xls','txt','csv'}
 
 db.init_app(app)
 
 with app.app_context():
     db.create_all()
+
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+
+def db_upload_customers(file):
+    filetype = file.rsplit('.',1)
+    if filetype[1] == 'xls' or filetype[1] == 'xlsx':
+        workbook = openpyxl.load_workbook(file)
+        #excel workbook has to have one sheet, it will only select the first one, thus [0]
+        ws_name = workbook.get_sheet_names()[0]
+        worksheet = workbook.get_sheet_by_name(ws_name)  # -> TODO: Update the method or create one for several sheets        
+        for row in worksheet.iter_rows():
+            #print(row)
+            if row[0] and row [1]: # -> TODO: Update verificaton for better & accurate upload
+                customer = Customer(
+                    name=row[0].value,
+                    email=row[1].value,
+                    address=row[2].value,
+                    phone=row[3].value,
+                    opt_email=row[4].value,
+                    opt_phone=row[5].value,
+                    opt_chat=row[6].value,
+                    status=row[7].value,
+                    last_updated=datetime.datetime.now()
+                    #last_contacted=row[8].value -> TODO: helper method for parsing date from excel
+                    )
+                db.session.add(customer)
+                db.session.commit()
+            else:
+                logging.waring(f'customer not uploaded in db, missing data name and email: {row}')
+    elif filetype == 'csv':
+        with open(file,'r', encoding='utf-8') as csv_file:
+            reader = csv.reader(csv_file)
+            for row in reader:
+                if row[0] and row[1]:
+                    customer = Customer(
+                        name=row[0],
+                        email=row[1],
+                        address=row[2],
+                        phone=row[3],
+                        opt_email=row[4],
+                        opt_phone=row[5],
+                        opt_chat=row[6],
+                        status=row[7],
+                        last_updated=datetime.datetime.now()
+                    )
+                    db.session.add(customer)
+    elif filetype == 'txt':
+        pass # -> TODO to implement txt files read
+    db.session.commit()
+
+def db_upload_products(file):
+    filetype = file.rsplit('.',1)
+    if filetype[1] == 'xls' or filetype[1] == 'xlsx':
+        workbook = openpyxl.load_workbook(file)
+        #excel workbook has to have one sheet, it will only select the first one, thus [0]
+        ws_name = workbook.get_sheet_names()[0]
+        worksheet = workbook.get_sheet_by_name(ws_name)  # -> TODO: Update the method or create one for several sheets        
+        for row in worksheet.iter_rows():
+            #print(row)
+            if row[0] and row [1]: # -> TODO: Update verificaton for better & accurate upload
+                product = Product(
+                    name=row[0].value,
+                    price=float(row[1].value)
+                    #purhcased=row[2].value, # -> TODO: helper method for parsing date from excel
+                    #warranty=row[3].value,
+                    )
+                db.session.add(customer)
+                db.session.commit()
+            else:
+                logging.waring(f'customer not uploaded in db, missing data name and email: {row}')
+    elif filetype == 'csv':
+        with open(file,'r', encoding='utf-8') as csv_file:
+            reader = csv.reader(csv_file)
+            for row in reader:
+                if row[0] and row[1]:
+                    customer = Customer(
+                        name=row[0],
+                        price=float(row[1])
+                        #purchased=row[2], # -> TODO: helper method for parsing date from csv
+                        #warranty=row[3],
+                    )
+                    db.session.add(customer)
+    elif filetype == 'txt':
+        pass # -> TODO to implement txt files read
+    db.session.commit()
+
 
 # GET routes -------------------------------------------
 
@@ -113,6 +209,43 @@ def add_customer():
     app.logging.info(f"Customer: {name} added")
     return "customer added", 200
 
+@app.route('/upload/customers',methods=['POST'])
+def import_customers():
+    if 'custfile' not in request.files:
+        flash(f'No or corrupted file')
+        return redirect(url_for('index'))
+    file = request.files['custfile']
+    if file.filename == '':
+        flash(f'No file selected for upload {file}')
+        return redirect(url_for('index'))
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        db_upload_customers(filepath)
+        flash('File uploaded successfully')
+        return redirect(url_for('index'))
+    
+@app.route('/upload/products',methods=['POST'])
+def import_products():
+    if 'prodfile' not in request.files:
+        flash(f'No or corrupted file')
+        return redirect(url_for('index'))
+    file = request.files['prodfile']
+    if file.filename == '':
+        flash(f'No file selected for upload {file}')
+        return redirect(url_for('index'))
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        db_upload_products(filepath)
+        flash('File uploaded successfully')
+        return redirect(url_for('index'))
+
+
+
+    
 logging.basicConfig(filename='./api.log',level=logging.INFO)
 import api_routes_customer
 import api_routes_product 
