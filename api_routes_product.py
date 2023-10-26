@@ -1,6 +1,6 @@
 from app import app, request, db, logging, send_from_directory
 from product import ProductResponse
-from utils import strToBool
+from utils import strToBool, check_keys, export_products
 import datetime as dt, openpyxl
 from models import Product
 
@@ -129,26 +129,10 @@ def api_update_product():
 @app.route('/api/product/export')
 def api_product_export():
     data = request.get_json()
-    if all(key in data for key in ('name','surname','email')):
+    if check_keys(('name','surname','email'),data.keys()):
         logging.info(f"{data['name']} {data['surname']} with {data['email']} initiated export of customer data")
-        products = Product.query.all()
-        if products:
-            workbook = openpyxl.Workbook()
-            worksheet = workbook.active
-            row = 1
-            for product in products:
-                worksheet[f'A{row}'] = product.id
-                worksheet[f'B{row}'] = product.name
-                worksheet[f'C{row}'] = product.price
-                worksheet[f'D{row}'] = product.purchased
-                worksheet[f'E{row}'] = product.customer_id
-                worksheet[f'F{row}'] = product.warranty
-                row += 1
-            now = dt.datetime.now().strftime("%d%m%Y_%H%M") 
-            excel_file = f'products_data{now}.xlsx' 
-            workbook.save(f'uploaded/{excel_file}')
-            logging.info('Export successful')
-            return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,path=excel_file, as_attachment=True)
+        excel_file = export_products()
+        return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,path=excel_file, as_attachment=True)
         logging.warning('No customer records')
         return 'No customer records', 404
     logging.error('Wrong query parameters')

@@ -1011,3 +1011,755 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug:127.0.0.1 - - [25/Oct/2023 01:05:19] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [25/Oct/2023 01:05:24] "[32mPOST /upload/customers HTTP/1.1[0m" 302 -
 INFO:werkzeug:127.0.0.1 - - [25/Oct/2023 01:05:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:stoyan todorov with c.todopob@gmail.com initiated export of customer data
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:08:47] "GET /api/product/export HTTP/1.1" 200 -
+INFO:root:stoyan todorov with c.todopob@gmail.com initiated export of customer data
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:09:03] "GET /api/customer/export HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:22:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:22:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:22:24] "[32mPOST /upload/customers HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:22:25] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:24:54] "[32mPOST /upload/customers HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:24:55] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:26:00] "[32mPOST /upload/customers HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:26:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:27:20] "[32mPOST /upload/customers HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:27:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: ' 0878125454'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 227, in import_customers
+    db_upload_customers(filepath)
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 80, in db_upload_customers
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1188, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: ' 0878125454'
+[SQL: INSERT INTO customer (name, email, address, phone, opt_email, opt_phone, opt_chat, status, revenue, last_updated, last_contacted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'phone': ' Bulgaria"', 'address': ' "15 Slavyanska str. Burgas', 'opt_email': ' 0878125454', 'name': 'Georgi Dimitrov', 'opt_phone': ' true', 'last_u ... (16 characters truncated) ... e.datetime(2023, 10, 26, 20, 28, 27, 491668), 'status': ' false', 'opt_chat': ' true', 'email': ' georgi.dimitrov@vivacom.bg', 'last_contacted': None}]]
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:28:27] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: ' 0878125454'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 227, in import_customers
+    db_upload_customers(filepath)
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 80, in db_upload_customers
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1188, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: ' 0878125454'
+[SQL: INSERT INTO customer (name, email, address, phone, opt_email, opt_phone, opt_chat, status, revenue, last_updated, last_contacted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'phone': ' Bulgaria"', 'address': ' "15 Slavyanska str. Burgas', 'opt_email': ' 0878125454', 'name': 'Georgi Dimitrov', 'opt_phone': ' true', 'last_u ... (16 characters truncated) ... e.datetime(2023, 10, 26, 20, 29, 54, 292347), 'status': ' false', 'opt_chat': ' true', 'email': ' georgi.dimitrov@vivacom.bg', 'last_contacted': None}]]
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:29:54] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:30:33] "GET / HTTP/1.1" 200 -
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: ' 0878125454'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 227, in import_customers
+    db_upload_customers(filepath)
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 80, in db_upload_customers
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1188, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: ' 0878125454'
+[SQL: INSERT INTO customer (name, email, address, phone, opt_email, opt_phone, opt_chat, status, revenue, last_updated, last_contacted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'phone': ' Bulgaria"', 'address': ' "15 Slavyanska str. Burgas', 'opt_email': ' 0878125454', 'name': 'Georgi Dimitrov', 'opt_phone': ' true', 'last_u ... (16 characters truncated) ... e.datetime(2023, 10, 26, 20, 30, 39, 445019), 'status': ' false', 'opt_chat': ' true', 'email': ' georgi.dimitrov@vivacom.bg', 'last_contacted': None}]]
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:30:39] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: ' 0878125454'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 227, in import_customers
+    db_upload_customers(filepath)
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 80, in db_upload_customers
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1188, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: ' 0878125454'
+[SQL: INSERT INTO customer (name, email, address, phone, opt_email, opt_phone, opt_chat, status, revenue, last_updated, last_contacted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'phone': ' Bulgaria"', 'address': ' "15 Slavyanska str. Burgas', 'opt_email': ' 0878125454', 'name': 'Georgi Dimitrov', 'opt_phone': ' true', 'last_u ... (15 characters truncated) ... me.datetime(2023, 10, 26, 20, 31, 54, 52082), 'status': ' false', 'opt_chat': ' true', 'email': ' georgi.dimitrov@vivacom.bg', 'last_contacted': None}]]
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:31:54] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:33:56] "GET / HTTP/1.1" 200 -
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: ' 0878125454'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 227, in import_customers
+    db_upload_customers(filepath)
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 80, in db_upload_customers
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1188, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: ' 0878125454'
+[SQL: INSERT INTO customer (name, email, address, phone, opt_email, opt_phone, opt_chat, status, revenue, last_updated, last_contacted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'opt_chat': ' true', 'name': 'Georgi Dimitrov', 'email': ' georgi.dimitrov@vivacom.bg', 'last_updated': datetime.datetime(2023, 10, 26, 20, 34, 0, 34 ... (15 characters truncated) ...  ' Bulgaria"', 'opt_email': ' 0878125454', 'address': ' "15 Slavyanska str. Burgas', 'opt_phone': ' true', 'status': ' false', 'last_contacted': None}]]
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:34:00] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 226, in import_customers
+    file.save(filepath)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\werkzeug\datastructures.py", line 3002, in save
+    dst = open(dst, "wb")
+          ^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: './uploaded\\new2.csv'
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:37:11] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: ' 0878125454'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 227, in import_customers
+    db_upload_customers(filepath)
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 80, in db_upload_customers
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1188, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: ' 0878125454'
+[SQL: INSERT INTO customer (name, email, address, phone, opt_email, opt_phone, opt_chat, status, revenue, last_updated, last_contacted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'opt_chat': ' true', 'name': 'Georgi Dimitrov', 'email': ' georgi.dimitrov@vivacom.bg', 'last_updated': datetime.datetime(2023, 10, 26, 20, 37, 35, 5 ... (16 characters truncated) ...  ' Bulgaria"', 'opt_email': ' 0878125454', 'address': ' "15 Slavyanska str. Burgas', 'opt_phone': ' true', 'status': ' false', 'last_contacted': None}]]
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:37:35] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /upload/customers [POST]
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+TypeError: Not a boolean value: 'true'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 227, in import_customers
+    db_upload_customers(filepath)
+  File "C:\Users\ctodo\Documents\Projects\Python\CRM\app.py", line 80, in db_upload_customers
+    db.session.commit()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 538, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4153, in flush
+    self._flush(objects)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4289, in _flush
+    with util.safe_reraise():
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 4250, in _flush
+    flush_context.execute()
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1188, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 485, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 2325, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1261, in _init_compiled
+    l_param: List[Any] = [
+                         ^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\default.py", line 1262, in <listcomp>
+    flattened_processors[key](compiled_params[key])
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1994, in process
+    value = _strict_as_bool(value)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ctodo\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1966, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % (value,))
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: 'true'
+[SQL: INSERT INTO customer (name, email, address, phone, opt_email, opt_phone, opt_chat, status, revenue, last_updated, last_contacted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'phone': '0878125454', 'last_updated': datetime.datetime(2023, 10, 26, 20, 40, 17, 865331), 'email': 'georgi.dimitrov@vivacom.bg', 'opt_phone': 'true ... (14 characters truncated) ...  'false', 'name': 'Georgi Dimitrov', 'status': 'active', 'address': '15 Slavyanska str. Burgas Bulgaria', 'opt_email': 'true', 'last_contacted': None}]]
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2023 20:40:17] "[35m[1mPOST /upload/customers HTTP/1.1[0m" 500 -

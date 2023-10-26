@@ -1,9 +1,8 @@
 from app import app, request, db, logging
-from customer_response import CustomerResponse
-from product import ProductResponse, FeedbackResponse, ProductFeedbackResponse
-from utils import strToBool
+from product import  FeedbackResponse, ProductFeedbackResponse
+from utils import check_keys
 import datetime as dt
-from models import Customer, Product, Feedback, ProductFeedback
+from models import Feedback, ProductFeedback
 
 @app.route('/api/add/brand/feedback', methods=['POST'])
 def add_product_feedback():
@@ -31,11 +30,11 @@ def add_product_feedback():
 @app.route('/api/add/product/feedback', methods=['POST'])
 def add_brand_feedback():
     data = request.get_json()
-    if all(key in data for key in ('customerid',
-                                   'productid',
-                                   'heading',
-                                   'body',
-                                   'nps')):
+    if check_keys(('customerid',
+                    'productid',
+                    'heading',
+                    'body',
+                    'nps'),data.keys()):
         productFeedback = ProductFeedback(customer_id=data['customerid'],
                                           product_id=data['productid'],
                                           heading=data['heading'],

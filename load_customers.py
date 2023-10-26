@@ -1,9 +1,6 @@
 from app import app, request, db, logging, ALLOWED_EXTENTIONS, redirect, url_for
-from customer_response import CustomerResponse, CustomerRequestResponse
-from product import ProductResponse
-from utils import strToBool
-import datetime as dt, openpyxl, os
-from models import Customer, Product, CustomerRequest
+import openpyxl, os
+from models import Customer
 from werkzeug.utils import secure_filename
 
 def allowed_file(file):

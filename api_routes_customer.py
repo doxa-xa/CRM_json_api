@@ -1,7 +1,7 @@
 from app import app, request, db, logging, send_from_directory
 from customer_response import CustomerResponse
 from product import ProductResponse
-from utils import strToBool
+from utils import strToBool, check_keys, export_customers
 import datetime as dt, openpyxl
 from models import Customer, Product
 
@@ -133,32 +133,10 @@ def api_update_customer():
 @app.route('/api/customer/export')
 def api_customer_export():
     data = request.get_json()
-    if all(key in data for key in ('name','surname','email')):
+    if check_keys(('name','surname','email'),data.keys()):
         logging.info(f"{data['name']} {data['surname']} with {data['email']} initiated export of customer data")
-        customers = Customer.query.all()
-        if customers:
-            workbook = openpyxl.Workbook()
-            worksheet = workbook.active
-            row = 1
-            for customer in customers:
-                worksheet[f'A{row}'] = customer.id
-                worksheet[f'B{row}'] = customer.name
-                worksheet[f'C{row}'] = customer.email
-                worksheet[f'D{row}'] = customer.address
-                worksheet[f'E{row}'] = customer.phone
-                worksheet[f'F{row}'] = customer.opt_email
-                worksheet[f'G{row}'] = customer.opt_phone
-                worksheet[f'H{row}'] = customer.opt_chat
-                worksheet[f'I{row}'] = customer.status
-                worksheet[f'J{row}'] = customer.revenue
-                worksheet[f'K{row}'] = customer.last_updated
-                worksheet[f'L{row}'] = customer.last_contacted
-                row += 1
-            now = dt.datetime.now().strftime("%d%m%Y_%H%M") 
-            excel_file = f'customers_data{now}.xlsx' 
-            workbook.save(f'uploaded/{excel_file}')
-            logging.info('Export successful')
-            return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,path=excel_file, as_attachment=True)
+        excel_file = export_customers()
+        return send_from_directory(directory=app.config['UPLOAD_FOLDER'] ,path=excel_file, as_attachment=True)
         logging.warning('No customer records')
         return 'No customer records', 404
     logging.error('Wrong query parameters')

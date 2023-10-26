@@ -59,9 +59,10 @@ def db_upload_customers(file):
                 db.session.commit()
             else:
                 logging.waring(f'customer not uploaded in db, missing data name and email: {row}')
-    elif filetype == 'csv':
+    elif filetype[1] == 'csv' or 'txt':
+        print(file)
         with open(file,'r', encoding='utf-8') as csv_file:
-            reader = csv.reader(csv_file)
+            reader = csv.reader(csv_file,delimiter=',', quotechar='"')
             for row in reader:
                 if row[0] and row[1]:
                     customer = Customer(
@@ -69,16 +70,14 @@ def db_upload_customers(file):
                         email=row[1],
                         address=row[2],
                         phone=row[3],
-                        opt_email=row[4],
-                        opt_phone=row[5],
-                        opt_chat=row[6],
+                        opt_email=strToBool(row[4]),
+                        opt_phone=strToBool(row[5]),
+                        opt_chat=strToBool(row[6]),
                         status=row[7],
                         last_updated=datetime.datetime.now()
                     )
                     db.session.add(customer)
-    elif filetype == 'txt':
-        pass # -> TODO to implement txt files read
-    db.session.commit()
+                    db.session.commit()
 
 def db_upload_products(file):
     filetype = file.rsplit('.',1)
@@ -100,9 +99,9 @@ def db_upload_products(file):
                 db.session.commit()
             else:
                 logging.waring(f'customer not uploaded in db, missing data name and email: {row}')
-    elif filetype == 'csv':
+    elif filetype[1] == 'csv' or 'txt':
         with open(file,'r', encoding='utf-8') as csv_file:
-            reader = csv.reader(csv_file)
+            reader = csv.reader(csv_file, delimiter=',', quotechar='"')
             for row in reader:
                 if row[0] and row[1]:
                     customer = Customer(
@@ -112,10 +111,8 @@ def db_upload_products(file):
                         #warranty=row[3],
                     )
                     db.session.add(customer)
-    elif filetype == 'txt':
-        pass # -> TODO to implement txt files read
-    db.session.commit()
-
+                    db.session.commit()
+    
 
 # GET routes -------------------------------------------
 
